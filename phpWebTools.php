@@ -1,5 +1,5 @@
 <?php
-	$version = "Version 0.1.0.1 alpha test 4";
+	$version = "Version 0.1.0.1 alpha test 5";
 
 	class phpWebTools{
 	
@@ -24,17 +24,35 @@
 			$time_hi_and_version = array($version, dechex(rand(0, 15)),
 						dechex(rand(0, 15)), dechex(rand(0, 15)));
 
-			$clock_seq_hi_and_res_clock_seq_low = array($this->generatePrivateVariant($variant), dechex(rand(0, 15)),
+			$clock_seq_hi_and_res_clock_seq_low = array($this->generateUUIDVariant($variant), dechex(rand(0, 15)),
 						dechex(rand(0, 15)), dechex(rand(0, 15)));
 
 			$node = array(dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)),
 						dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)),
 						dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)));
 			
-			return $time_low . "-" . $time_mid . "-" . $time_hi_and_version . "-" . $clock_seq_hi_and_res_clock_seq_low . "-" . $node;
+			//return $time_low . "-" . $time_mid . "-" . $time_hi_and_version . "-" . $clock_seq_hi_and_res_clock_seq_low . "-" . $node;
+			
+			$uuid = "";
+			
+			for($i = 0; $i < 8; $i++){
+				$uuid + $time_low[$i];
+			}
+			for($i = 0; $i < 4; $i++){
+				$uuid + $time_mid[$i];
+			}
+			for($i = 0; $i < 4; $i++){
+				$uuid + $time_hi_and_version[$i];
+			}
+			for($i = 0; $i < 4; $i++){
+				$uuid + $clock_seq_hi_and_res_clock_seq_low[$i];
+			}
+			for($i = 0; $i < 12; $i++){
+				$uuid + $node[$i];
+			}
 		}
 
-		private function generatePrivateVariant(int $variant){
+		private function generateUUIDVariant(int $variant){
 			//0 = Variant 10
 			//1 = Variant 110
 			//2 = Variant 0
