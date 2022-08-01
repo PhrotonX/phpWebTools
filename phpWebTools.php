@@ -1,5 +1,5 @@
 <?php
-	$version = "Version 0.1.0.1 alpha test 3";
+	$version = "Version 0.1.0.1 alpha test 4";
 
 	class phpWebTools{
 	
@@ -11,6 +11,29 @@
 			
 		}*/
 		
+		public function generateUUID(int $version, int $variant){
+			
+			$time_low = array(dechex(rand(0, 15)), dechex(rand(0, 15)),
+						dechex(rand(0, 15)), dechex(rand(0, 15)),
+						dechex(rand(0, 15)), dechex(rand(0, 15)),
+						dechex(rand(0, 15)), dechex(rand(0, 15)));
+
+			$time_mid = array(dechex(rand(0, 15)), dechex(rand(0, 15)),
+						dechex(rand(0, 15)), dechex(rand(0, 15)));
+
+			$time_hi_and_version = array($version, dechex(rand(0, 15)),
+						dechex(rand(0, 15)), dechex(rand(0, 15)));
+
+			$clock_seq_hi_and_res_clock_seq_low = array($this->generatePrivateVariant($variant), dechex(rand(0, 15)),
+						dechex(rand(0, 15)), dechex(rand(0, 15)));
+
+			$node = array(dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)),
+						dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)),
+						dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)));
+			
+			return $time_low . "-" . $time_mid . "-" . $time_hi_and_version . "-" . $clock_seq_hi_and_res_clock_seq_low . "-" . $node;
+		}
+
 		private function generatePrivateVariant(int $variant){
 			//0 = Variant 10
 			//1 = Variant 110
@@ -28,29 +51,6 @@
 				default:
 					return "Error";
 			}
-		}
-
-		public function generateUUID(int $version, int $variant){
-			
-			$time_low = array(dechex(rand(0, 15)), dechex(rand(0, 15)),
-						dechex(rand(0, 15)), dechex(rand(0, 15)),
-						dechex(rand(0, 15)), dechex(rand(0, 15)),
-						dechex(rand(0, 15)), dechex(rand(0, 15)));
-
-			$time_mid = array(dechex(rand(0, 15)), dechex(rand(0, 15)),
-						dechex(rand(0, 15)), dechex(rand(0, 15)));
-
-			$time_hi_and_version = array($version, dechex(rand(0, 15)),
-						dechex(rand(0, 15)), dechex(rand(0, 15)));
-
-			$clock_seq_hi_and_res_clock_seq_low = array(generatePrivateVariant($variant), dechex(rand(0, 15)),
-						dechex(rand(0, 15)), dechex(rand(0, 15)));
-
-			$node = array(dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)),
-						dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)),
-						dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)));
-			
-			return $time_low . "-" . $time_mid . "-" . $time_hi_and_version . "-" . $clock_seq_hi_and_res_clock_seq_low . "-" . $node;
 		}
 		
 	}
