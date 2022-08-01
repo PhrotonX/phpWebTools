@@ -1,5 +1,5 @@
 <?php
-	$version = "Version 0.1.0.1 alpha test 6";
+	$version = "Version 0.1.0.1 alpha test 7";
 
 	class phpWebTools{
 	
@@ -12,7 +12,9 @@
 		}*/
 		
 		public function generateUUID(int $version, int $variant){
-			
+
+			//Rewrite this into a more readable code
+			//Seperate this into a different class
 			$time_low = array(dechex(rand(0, 15)), dechex(rand(0, 15)),
 						dechex(rand(0, 15)), dechex(rand(0, 15)),
 						dechex(rand(0, 15)), dechex(rand(0, 15)),
@@ -31,8 +33,6 @@
 						dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)),
 						dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)), dechex(rand(0, 15)));
 			
-			//return $time_low . "-" . $time_mid . "-" . $time_hi_and_version . "-" . $clock_seq_hi_and_res_clock_seq_low . "-" . $node;
-			
 			$uuid = "";
 			
 			for($i = 0; $i < 8; $i++){
@@ -50,6 +50,8 @@
 			for($i = 0; $i < 12; $i++){
 				$uuid . $node[$i];
 			}
+
+			return $uuid;
 		}
 
 		private function generateUUIDVariant(int $variant){
