@@ -1,5 +1,5 @@
 <?php
-	$version = "Version 0.1.0.1 alpha test 5";
+	$version = "Version 0.1.0.1 alpha test 6";
 
 	class phpWebTools{
 	
@@ -36,19 +36,19 @@
 			$uuid = "";
 			
 			for($i = 0; $i < 8; $i++){
-				$uuid + $time_low[$i];
+				$uuid . $time_low[$i];
 			}
 			for($i = 0; $i < 4; $i++){
-				$uuid + $time_mid[$i];
+				$uuid . $time_mid[$i];
 			}
 			for($i = 0; $i < 4; $i++){
-				$uuid + $time_hi_and_version[$i];
+				$uuid . $time_hi_and_version[$i];
 			}
 			for($i = 0; $i < 4; $i++){
-				$uuid + $clock_seq_hi_and_res_clock_seq_low[$i];
+				$uuid . $clock_seq_hi_and_res_clock_seq_low[$i];
 			}
 			for($i = 0; $i < 12; $i++){
-				$uuid + $node[$i];
+				$uuid . $node[$i];
 			}
 		}
 
